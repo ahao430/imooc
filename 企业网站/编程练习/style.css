@@ -1,0 +1,157 @@
+*{
+	margin:0;
+	padding:0;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+.box{
+	width:1000px;
+	margin:0 auto;
+}
+.active{
+	background:#bd3847;
+}
+.clearfix:after{
+	display: block;
+	content:""
+	clear:both;
+	line-height: 0;
+	visibility: hidden;
+}
+.tlink a:link,.tlink a:visited{
+	color:#fff;
+	text-decoration: none;
+}
+.link a:link,.link a:visited{
+	color:#000;
+	text-decoration: none;
+}
+.link a:hover,.link a:active,.tlink a:hover,.tlink a:active{
+	color:#f00;
+	text-decoration: none;
+}
+
+.header{
+	height: 70px;
+}
+	.header img{
+		float:left;
+	}
+	.header li{
+		float:left;
+		width:100px;
+		list-style: none;
+	}
+	.header a{
+		display:inline-block;
+		text-decoration: none;
+		width:100px;
+		height:70px;
+		line-height: 70px;
+		text-align:center;
+		color:#000;
+		font-size: 16px;
+	}
+	.header li a:hover,.header li a:active{
+		background:#bd3847;
+	}
+.main{
+	margin-top: 5px;
+}
+	.top{
+		height:300px;
+		overflow:hidden;
+	}
+	.pic ul{
+		list-style: none;
+	}
+	.title{
+		height:35px;
+		background:#bd3847; 
+		color:#fff;
+		text-indent: 1em;
+		line-height: 35px;
+	}
+	.mid_title{
+		width:1000px;
+		margin: 20px 0;
+	}
+	.title_left,.title_right{
+		float:left;
+	}
+	.title_left{
+		width:150px;
+		text-align: center;
+	}
+	.title_right{
+		width:850px;
+		background: #3e3e3e;
+	}
+	.title_right a:hover{
+		color:#f00;
+	}
+	.mid_content{
+		height:158px;
+		width:1000px;
+	}
+	.left,.mid,.right{
+		float:left;
+		width:328px;
+		border:1px solid #ccc;
+	}
+	.mid{
+		margin:0 5px;
+	}
+	.mid_content span{
+		text-align: center;
+		display: block;
+		font-size: 16px;
+		height:28px;
+		line-height: 28px;
+	}
+	.bottom{
+		margin: 20px 0;
+		width:1000px;
+	}
+	.news li{
+		list-style: none;
+		margin:10px 0 0 0;
+		border-bottom: 1px solid #ccc;
+	}
+	.news_left{
+		float:left;
+		display: inline-block;
+		padding:10px;
+		background: #bd3847;
+		border-radius: 2px;
+		margin:0 5px;
+		text-align: center;
+		color: #fff;
+	}
+	.news_right dt{
+		font-weight: bold;
+		margin-bottom: 8px;
+	}
+	.news_right dd{
+		padding-bottom: 5px;
+	}
+	.activity img{
+		width:288px;
+		height:140px;
+		padding:10px 10px 5px 10px;
+	}
+	.activity li{
+		list-style: none;
+		padding-left: 20px;
+	}
+	.contact_content{
+		padding: 10px;
+	} 
+.footer{
+	width:1000px;
+	margin:0 auto;
+	background: #e8e8e8;
+	height:70px;
+	line-height:70px;
+	text-align:center;
+}

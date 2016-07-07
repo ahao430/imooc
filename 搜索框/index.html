@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Bing Search</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		html{
+			height:100%;
+			width:100%;
+		}
+		body{
+			height:100%;
+			width:100%;
+			position:relative;
+			background: url(river.jpg) no-repeat;
+			background-size: 100% 100%;	
+			z-index: -10;
+		}
+		header{
+			height: 40px;
+			width:100%;
+			position: absolute;
+			top:0;
+			background-color: #333;
+		}
+		footer{
+			height: 40px;
+			width:100%;
+			position: absolute;
+			bottom:0;
+			background-color: #333;
+		}
+		header #leftmenu ul{
+			padding-left:15px;
+		}
+		header #leftmenu ul li{
+			list-style: none;
+			float:left;
+			height:40px;
+			line-height: 40px;
+			padding-left:37px;
+			color:#aaa; 
+		}
+		header #leftmenu ul li a{
+			color:#aaa;
+			font-size:12px;
+			text-decoration: none;
+		}
+		header #leftmenu ul li a:hover{
+			color:#fff;
+		}
+		header #rightmenu ul{
+			padding-right:12px;
+			float:right;
+		}
+		header #rightmenu ul li{
+			list-style: none;
+			float:left;
+			height:40px;
+			line-height: 40px;
+			padding-right:18px;
+			color:#aaa; 
+		}
+		header #rightmenu ul li a{
+			color:#aaa;
+			font-size:12px;
+			text-decoration: none;
+		}
+		header #rightmenu ul li a:hover{
+			color:#fff;
+		}
+		footer #footermenu ul{
+			padding-right:12px;
+			float:right;
+		}
+		footer #footermenu ul li{
+			list-style: none;
+			float:left;
+			height:40px;
+			line-height: 40px;
+			padding-right:15px;
+			color:#666; 
+			font-size:10px;
+		}
+		footer #footermenu ul li a{
+			color:#666;
+			font-size:10px;
+			text-decoration: none;
+		}
+		footer #footermenu ul li a:hover{
+			text-decoration: underline;
+		}
+		#search-box{
+			position: absolute;
+			top:20%;
+			left:8%;
+		}
+		
+		#search-box .logo{
+			float:left;
+			background: url(logo.png) no-repeat;
+			width: 130px;
+			height: 80px;
+		}
+		#search-box .search{
+			background: #fff;
+			width: 600px;
+			height: 40px;
+			margin-top: 8px;
+			float:left;
+			border:0;
+		}
+		#search-box .search .search-text{
+			width:550px;
+			height: 40px;
+			line-height: 40px;
+			float: left;
+			outline: none;
+			border:0;
+			padding-left: 10px;
+		}
+		#search-box .search .search-button{
+			background: url(search-button.png) no-repeat;
+			width:40px;
+			height: 40px;
+			background-size: 40px 40px;
+			float: left;
+			outline: none;
+			border:0;
+			
+		}
+		#search-box .search .search-button:hover{
+			cursor: pointer;
+		}
+		#search-result{
+			position: absolute;
+			background: #fff;
+			width:561px;
+			display: none;
+		}
+		#search-result ul li{
+			list-style: none;
+			line-height: 26px;
+			font-size: 7px;
+			padding-left: 10px;
+		}
+		#search-result ul .choice,#search-result ul li:hover{
+			background: #ccc;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	</style>
+	<script type='text/javascript' src='http://libs.baidu.com/jquery/1.9.0/jquery.js'></script>
+	<script type='text/javascript'>
+	$(function(){
+		var resulttop=$('.search-text').offset().top+$('.search-text').height();
+		var resultleft=$('.search-text').offset().left;
+		$('.search-text').bind('keydown',function(event){
+			var searchText=$('.search-text').val();
+			$.ajax({
+				url:'http://api.bing.com/qsonhs.aspx?type=cb&q='+searchText,
+				dataType:'jsonp',
+				jsonp:'cb',
+				success:function(d){
+					var d=d.AS.Results?d.AS.Results[0].Suggests:'';
+					var html='';
+					for(var i=0;i<d.length;i++){
+						html+='<li>'+d[i].Txt+'</li>';
+					}
+					$('#result').html(html);
+					$('#search-result').show().css({'left':resultleft+'px','top':resulttop+'px'});
+					$('#result').addClass
+				}
+			});
+		});
+		$('body').bind('click',function(){
+			$('#search-result').hide();
+		});
+		$('#result').delegate('li','click',function(){
+			var keyword=$(this).text();
+			location.href='http://cn.bing.com/search?q='+keyword;
+		});
+		
+	});
+	</script>
+</head>
+<body>
+	<header>
+		<div id='leftmenu'>
+			<ul>
+				<li><a href="http://cn.bing.com/images?FORM=Z9LH">图片</a></li>
+				<li><a href="http://cn.bing.com/videos?FORM=Z9LH1">视频</a></li>
+				<li><a href="http://cn.bing.com/academic/?FORM=Z9LH2">学术</a></li>
+				<li><a href="http://cn.bing.com/dict/?FORM=Z9LH3">词典</a></li>
+				<li><a href="http://cn.bing.com/ditu/?FORM=Z9LH4">地图</a></li>
+				<li><a href="http://cn.bing.com/explore?FORM=Z9LH5">更多</a></li>
+				<li>|</li>
+				<li><a href="https://www.office.com/?WT.mc_id=O16_BingHP" target="_blank">Office Online</a></li>
+				<li><a href="https://outlook.com/?WT.mc_id=O16_BingHP?mkt=zh-CN" target="_blank">Outlook.con</a></li>
+			</ul>
+		</div>
+		<div id='rightmenu'>
+			<ul>
+				<li><a href="http://global.bing.com/?FORM=HPCNEN&setmkt=en-us&setlang=en-us#">Switch to Bing in English</a></li>
+				<li>|</li>
+				<li><a href="#">Hao Wang</a></li>
+				<li><a href="#"></a></li>
+			</ul>
+		</div>
+	</header>
+	<section id='main'>
+		<div id='search-box'>
+			<div class='logo'></div>
+			<form class='search' action="https://www.bing.com/search" method="get" autocomplete="off">
+				<input class='search-text' type="text" x-webkit-speech="" name='q' autofocus="autofocus" />
+				<input class='search-button' type="submit" value=''/>
+			</form>
+		</div>
+		<div id='search-result' class='hide'>
+			<ul id='result'>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+	</section>
+	<footer>
+		<div id='footermenu'>
+			<ul>
+				<li> <span style="font-size:18px">&copy;</span> 2016 Microsoft</li>
+				<li>|</li>
+				<li>沪ICP备10042051号</li>
+				<li>|</li>
+				<li><a href="https://privacy.microsoft.com/zh-cn/privacystatement">隐私声明和Cookie</a></li>
+				<li>|</li>
+				<li><a href="https://www.microsoft.com/zh-cn/servicesagreement/">使用条款</a></li>
+				<li>|</li>
+				<li><a href="http://bingads.bing.com.cn/">广告</a></li>
+				<li>|</li>
+				<li><a href="http://help.bing.microsoft.com/#apex/18/zh-CHS/n1999/-1/zh-CHS" target="_blank">帮助</a></li>
+				<li>|</li>
+				<li><a href="#" style="color:#999">反馈</a></li>
+			</ul>
+	</footer>
+</body>
+</html>
