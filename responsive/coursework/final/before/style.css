@@ -1,0 +1,60 @@
+/* reset */
+h1,h2,p,ul,li,span,div,header,time,main,div,body,html{
+	margin: 0;padding: 0;
+}
+ul{
+	list-style: none;
+	margin-bottom: 4rem;
+}
+/* common */
+.clearfix:after{
+	content: " ";
+	display: table;
+	clear:both;
+}
+/* wrapper */
+.wrapper{
+	width: 85%;margin:0 auto;
+}
+/* header */
+header{width: 100%;height: 12rem;overflow: hidden;}
+header h1{font-size: 2rem;color:#47A3DA;margin-top:4.5rem;}
+
+/* main */
+main{width: 100%;}
+time{float: left;width: 20%;height:100%;text-align:right;box-sizing:border-box;padding-right: 1rem;}
+time .date{font-size:0.8rem;color: #BDD0DB;display: block;}
+time .time{font-size:2.4rem;color:#6CBFEE;display: block;}
+.right{float:right;width: 80%;box-sizing: border-box;border-left: .625rem solid #afdcf8;padding-left: 5%;}
+.content {background-color:#6cbfee;padding:2.9rem 2.3rem 3.3rem;border-radius: .625rem;margin-bottom: 1rem;}
+.content:before{
+	content:"";display: block;width: 0;height: 0;
+	border-top: 1rem solid transparent;	border-right: 1rem solid #6cbfee;border-bottom: 1rem solid transparent;
+	position: absolute;margin-top: -2rem;margin-left: -3.3rem;
+}
+li:last-child .content{margin-bottom: 0;}
+li:nth-of-type(even) .content{background-color: #3594CB;}
+li:nth-of-type(even) .content:before{border-right:1rem solid #3594cb;}
+.content h2{font-size: 1.625rem;line-height: 2.5rem; color:#fff;padding-bottom:.9rem;border-bottom: 1px solid #fff;}
+.content p{font-size: 1rem;color:#fff;font-size: 1.1rem;line-height: 1.6rem;margin-top: 1.5rem;}
+/* responsive */
+@media only screen and (max-width:55em){
+	.wrapper{width: 90%;}
+	header{height: 8rem;}
+	header h1{text-align: center;margin-top: 2.5rem;}
+	time .time{font-size: 1.2rem;}
+	ul{margin-bottom: 2rem;}
+}
+@media only screen and (max-width:40em){
+	.wrapper{width: 85%;}
+	time{float:none;display:block;text-align: left;margin-bottom: 1.4rem;}
+	.right{padding-left: 0;width: 100%;float:none;border:none;}
+	.content{padding: 1.18rem .75rem 1.8rem;}
+	.content h2{line-height: 2.2rem;}
+	.content p{line-height: 1.2rem;}
+	.content:before{
+		border-left: 1rem solid transparent;border-bottom: 1rem solid #6cbfee;border-right: 1rem solid transparent;
+		position: absolute;margin-top: -3.2rem;margin-left: 0rem;
+	}
+	li:nth-of-type(even) .content:before{border-bottom:1rem solid #3594cb;border-right:1rem solid transparent; }
+}
