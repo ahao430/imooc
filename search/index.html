@@ -155,39 +155,7 @@
 			cursor: pointer;
 		}
 	</style>
-	<script type='text/javascript' src='http://libs.baidu.com/jquery/1.9.0/jquery.js'></script>
-	<script type='text/javascript'>
-	$(function(){
-		var resulttop=$('.search-text').offset().top+$('.search-text').height();
-		var resultleft=$('.search-text').offset().left;
-		$('.search-text').bind('keydown',function(event){
-			var searchText=$('.search-text').val();
-			$.ajax({
-				url:'http://api.bing.com/qsonhs.aspx?type=cb&q='+searchText,
-				dataType:'jsonp',
-				jsonp:'cb',
-				success:function(d){
-					var d=d.AS.Results?d.AS.Results[0].Suggests:'';
-					var html='';
-					for(var i=0;i<d.length;i++){
-						html+='<li>'+d[i].Txt+'</li>';
-					}
-					$('#result').html(html);
-					$('#search-result').show().css({'left':resultleft+'px','top':resulttop+'px'});
-					$('#result').addClass
-				}
-			});
-		});
-		$('body').bind('click',function(){
-			$('#search-result').hide();
-		});
-		$('#result').delegate('li','click',function(){
-			var keyword=$(this).text();
-			location.href='http://cn.bing.com/search?q='+keyword;
-		});
-		
-	});
-	</script>
+	
 </head>
 <body>
 	<header>
@@ -206,7 +174,7 @@
 		</div>
 		<div id='rightmenu'>
 			<ul>
-				<li><a href="http://global.bing.com/?FORM=HPCNEN&setmkt=en-us&setlang=en-us#">Switch to Bing in English</a></li>
+				<li><a href="https://global.bing.com/?FORM=HPCNEN&setmkt=en-us&setlang=en-us#">Switch to Bing in English</a></li>
 				<li>|</li>
 				<li><a href="#">Hao Wang</a></li>
 				<li><a href="#"></a></li>
@@ -240,12 +208,45 @@
 				<li>|</li>
 				<li><a href="https://www.microsoft.com/zh-cn/servicesagreement/">使用条款</a></li>
 				<li>|</li>
-				<li><a href="http://bingads.bing.com.cn/">广告</a></li>
+				<li><a href="https://bingads.bing.com.cn/">广告</a></li>
 				<li>|</li>
-				<li><a href="http://help.bing.microsoft.com/#apex/18/zh-CHS/n1999/-1/zh-CHS" target="_blank">帮助</a></li>
+				<li><a href="https://help.bing.microsoft.com/#apex/18/zh-CHS/n1999/-1/zh-CHS" target="_blank">帮助</a></li>
 				<li>|</li>
 				<li><a href="#" style="color:#999">反馈</a></li>
 			</ul>
 	</footer>
+	<script type='text/javascript' src='http://libs.baidu.com/jquery/1.9.0/jquery.js'></script>
+	<script type='text/javascript'>
+	$(function(){
+		var resulttop=$('.search-text').offset().top+$('.search-text').height();
+		var resultleft=$('.search-text').offset().left;
+		$('.search-text').bind('keydown',function(event){
+			var searchText=$('.search-text').val();
+			$.ajax({
+				url:'https://api.bing.com/qsonhs.aspx?type=cb&q='+searchText,
+				dataType:'jsonp',
+				jsonp:'cb',
+				success:function(d){
+					var d=d.AS.Results?d.AS.Results[0].Suggests:'';
+					var html='';
+					for(var i=0;i<d.length;i++){
+						html+='<li>'+d[i].Txt+'</li>';
+					}
+					$('#result').html(html);
+					$('#search-result').show().css({'left':resultleft+'px','top':resulttop+'px'});
+					$('#result').addClass
+				}
+			});
+		});
+		$('body').bind('click',function(){
+			$('#search-result').hide();
+		});
+		$('#result').delegate('li','click',function(){
+			var keyword=$(this).text();
+			location.href='https://cn.bing.com/search?q='+keyword;
+		});
+		
+	});
+	</script>
 </body>
 </html>
