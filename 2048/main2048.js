@@ -1,7 +1,7 @@
 var board = new Array();
 var score = 0;
 var hasConflicted = new Array();
-var documentWidth=window.screen.availWidth;
+var documentWidth=document.documentElement.clientWidth;
 var gridContainerWidth=0.92*documentWidth;
 var cellSideLength=0.18*documentWidth;
 var cellSpace=0.04*documentWidth;
