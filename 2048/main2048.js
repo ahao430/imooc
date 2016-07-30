@@ -158,13 +158,11 @@ $(document).keyup(function(e){
 document.addEventListener('touchstart',function(e){
 	startX=e.touches[0].pageX;
 	startY=e.touches[0].pageY;
-	e.preventDefault();
 })
 document.addEventListener('touchmove',function(e){
 	e.preventDefault();
 })
 document.addEventListener('touchend',function(e){
-	e.preventDefault();
 	stopX=e.changedTouches[0].pageX;
 	stopY=e.changedTouches[0].pageY;
 
