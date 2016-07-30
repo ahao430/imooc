@@ -22,6 +22,7 @@ function prepareForMobile(){
 		gridContainerWidth=500;
 		cellSpace=20;
 		cellSideLength=100;
+		$('#gameover').css('fontSize','80px');
 	}
 	$('#grid-container').css('width',gridContainerWidth-2*cellSpace+'px');
 	$('#grid-container').css('height',gridContainerWidth-2*cellSpace+'px');
@@ -39,6 +40,7 @@ function newgame(){
 }
 
 function init(){
+	$('#gameover').css({'width':gridContainerWidth,'display':'none'});
 	for(var i=0;i<4;i++){
 		for(var j=0;j<4;j++){
 			var gridCell = $('#grid-cell-'+i+'-'+j);
@@ -54,6 +56,7 @@ function init(){
 			hasConflicted[i][j]=false;
 		}
 	}
+
 	updateBoardView();
 	score=0;
 }
@@ -68,8 +71,8 @@ function updateBoardView(){
 			if(board[i][j]==0){
 				theNumberCell.css('wdith','0px');
 				theNumberCell.css('height','0px');
-				theNumberCell.css('top',getPosTop(i,j)+cellSideLength/2+'px');
-				theNumberCell.css('left',getPosLeft(i,j)+cellSideLength/2+'px');
+				theNumberCell.css('top',getPosTop(i,j)+'px');
+				theNumberCell.css('left',getPosLeft(i,j)+'px');
 			}else{
 				theNumberCell.css('width', cellSideLength+'px');
 				theNumberCell.css('height', cellSideLength+'px');
@@ -83,7 +86,7 @@ function updateBoardView(){
 		}
 	}
 	$('.number-cell').css('line-height',cellSideLength+'px');
-	$('.number-cell').css('font-size',0.6*cellSideLength+'px');
+	$('.number-cell').css('font-size',0.4*cellSideLength+'px');
 }
 
 function generateOneNumber(){
@@ -110,6 +113,16 @@ function generateOneNumber(){
 	showNumberWithAnimation(randx,randy,randNumber);
 	return true;
 }
+
+function isgameover(){
+	if(nospace(board)&&nomove(board)){
+		gameover();
+	}
+}
+function gameover(){
+	$('#gameover').css('display','block');
+}
+
 $(document).keydown(function(e){
 	if(e.keyCode==37||e.keyCode==38||e.keyCode==39||e.keyCode==40){
 		e.preventDefault();
@@ -208,14 +221,7 @@ document.addEventListener('touchend',function(e){
 	}
 })
 
-function isgameover(){
-	if(nospace(board)&&nomove(board)){
-		gameover();
-	}
-}
-function gameover(){
-	alert('gameover');	
-}
+
 
 function moveLeft(){
 	for(var i=0;i<4;i++){
