@@ -18,7 +18,7 @@ $(document).ready(function(){
 });
 
 function prepareForMobile(){
-	if(documentWidth>500){
+	if(documentWidth>600){
 		gridContainerWidth=500;
 		cellSpace=20;
 		cellSideLength=100;
@@ -167,7 +167,7 @@ document.addEventListener('touchend',function(e){
 	var deltaX=stopX-startX;
 	var deltaY=stopY-startY;
 	if(Math.abs(deltaX)>=Math.abs(deltaY)){
-		if(deltaX>80){
+		if(deltaX>50){
 			if(canMoveRight(board)){
 				if(moveRight()){
 					setTimeout(generateOneNumber(),210);
@@ -176,7 +176,7 @@ document.addEventListener('touchend',function(e){
 				
 			}
 		}
-		if(deltaX<-80){
+		if(deltaX<-50){
 			if(canMoveLeft(board)){
 				if(moveLeft()){
 					setTimeout(generateOneNumber(),210);
@@ -185,7 +185,7 @@ document.addEventListener('touchend',function(e){
 			}
 		}
 	}else{
-		if(deltaY>80){
+		if(deltaY>50){
 			if(canMoveDown(board)){
 				if(moveDown()){
 					setTimeout(generateOneNumber(),210);
@@ -194,7 +194,7 @@ document.addEventListener('touchend',function(e){
 				
 			}
 		}
-		if(deltaY<-80){
+		if(deltaY<-50){
 			if(canMoveUp(board)){
 				if(moveUp()){
 					setTimeout(generateOneNumber(),210);
